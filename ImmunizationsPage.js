@@ -13,7 +13,7 @@ export default class ImmunizationsPage extends Component<{}> {
 
   render() {
     const dummyDate = new Date();
-    const dummyFormattedDate = `${dummyDate.getFullYear()}/${dummyDate.getMonth() + 1}/${dummyDate.getDate()}`;
+    const dummyFormattedDate = `${dummyDate.getMonth() + 1}/${dummyDate.getDate()}/${dummyDate.getFullYear()}`;
 
     const immunizations = [
       {
@@ -49,9 +49,9 @@ export default class ImmunizationsPage extends Component<{}> {
         <View>
           <Header
               backgroundColor={'#4DD0E1'}
-              leftComponent={{icon: 'menu', color: '#fff'}}
-              centerComponent={{text: 'Immunizations', style: {color: '#fff'}}}
-              rightComponent={{icon: 'home', color: '#fff'}}
+              // leftComponent={{icon: 'menu', color: '#fff'}}
+              centerComponent={{text: 'Immunizations', style: {color: '#fff', fontWeight: '600', fontSize: 22}}}
+              // rightComponent={{icon: 'home', color: '#fff'}}
           />
           <ScrollView>
             {immunizations.map(
@@ -65,10 +65,17 @@ export default class ImmunizationsPage extends Component<{}> {
                       title={immunization.description}
                       subtitle={"Hello"}>
                     <View style={{
-                      paddingLeft: 20
+                      paddingLeft: 20,
+                      paddingBottom: 20
                     }}>
-                      <Text style={{fontWeight: '600', color: '#808080'}}>Last Dose: {dummyFormattedDate}</Text>
-                      <Text style={{fontWeight: '800', color: '#808080'}}>Due Date: {dummyFormattedDate}</Text>
+                      <Text style={{fontWeight: 'bold', color: '#4d4d4d'}}>Last Dose: {
+                        <Text style={{fontWeight: '300'}}>{dummyFormattedDate}</Text>}
+                      </Text>
+
+                      <Text style={{fontWeight: 'bold', color: '#4d4d4d'}}>Due Date: {
+                        <Text style={{fontWeight: '300'}}>{dummyFormattedDate}</Text>}
+                      </Text>
+
                     </View>
                     <ButtonGroup
                         buttons={buttons}
