@@ -17,22 +17,22 @@ export default class ImmunizationsPage extends Component<{}> {
 
     const immunizations = [
       {
-        description: 'Hepatitis',
+        description: 'HEPATITIS',
         lastDose: dummyDate,
         dueDate: dummyDate
       },
       {
-        description: 'Tetanus',
+        description: 'TETANUS',
         lastDose: dummyDate,
         dueDate: dummyDate
       },
       {
-        description: 'Chickenpox',
+        description: 'CHICKENPOX',
         lastDose: dummyDate,
         dueDate: dummyDate
       },
       {
-        description: 'Measles',
+        description: 'MEASLES',
         lastDose: dummyDate,
         dueDate: dummyDate
       },
@@ -48,9 +48,9 @@ export default class ImmunizationsPage extends Component<{}> {
     return (
         <View>
           <Header
-              backgroundColor={'#4DD0E1'}
+              backgroundColor={'#4DE8E8'}
               // leftComponent={{icon: 'menu', color: '#fff'}}
-              centerComponent={{text: 'Immunizations', style: {color: '#fff', fontWeight: '600', fontSize: 22}}}
+              centerComponent={{text: 'Immunizations', style: {color: '#fff', fontWeight: 'bold', fontSize:24}}}
               // rightComponent={{icon: 'home', color: '#fff'}}
           />
           <ScrollView>
@@ -58,17 +58,21 @@ export default class ImmunizationsPage extends Component<{}> {
                 (immunization, i) => {
                   return (<Card
                       containerStyle={{
-                        padding: 10
+                        padding: 10,
+                        shadowOffset: {width: 1, height: 1,},
+                        shadowColor: '#4DE8E8',
+                        shadowOpacity: .2,
                       }}
+
                       key={i}
                       hideChevron={true}
                       title={immunization.description}
                       subtitle={"Hello"}>
                     <View style={{
                       paddingLeft: 20,
-                      paddingBottom: 20
+                      paddingBottom: 30
                     }}>
-                      <Text style={{fontWeight: 'bold', color: '#4d4d4d'}}>Last Dose: {
+                      <Text style={{fontWeight: 'bold', color: '#4d4d4d', paddingBottom: 5}}>Last Dose: {
                         <Text style={{fontWeight: '300'}}>{dummyFormattedDate}</Text>}
                       </Text>
 
