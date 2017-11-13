@@ -68,7 +68,7 @@ export default class ImmunizationsPage extends Component<{}> {
                       paddingLeft: 20
                     }}>
                       <Text style={{fontWeight: '600', color: '#808080'}}>Last Dose: {dummyFormattedDate}</Text>
-                      <Text style={{fontWeight: '600', color: '#808080'}}>Due Date: {dummyFormattedDate}</Text>
+                      <Text style={{fontWeight: '800', color: '#808080'}}>Due Date: {dummyFormattedDate}</Text>
                     </View>
                     <ButtonGroup
                         buttons={buttons}
