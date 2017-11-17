@@ -14,12 +14,11 @@ export default class HomePage extends Component<{}> {
 	render() {
     const {navigate} = this.props.navigation;
     return (
+    <View>
     <ScrollView>
     	<Header
               backgroundColor={'#4DE8E8'}
-              // leftComponent={{icon: 'menu', color: '#fff'}}
-              centerComponent={{text: 'Welcome', style: {color: '#fff', fontWeight: 'bold', fontSize:24}}}
-              // rightComponent={{icon: 'home', color: '#fff'}}
+              centerComponent={{text: 'Home', style: {color: '#fff', fontWeight: 'bold', fontSize: 24}}}/>
           />
        <View>
        	<Card>
@@ -69,6 +68,7 @@ export default class HomePage extends Component<{}> {
        </Card>
        </View>
       </ScrollView>
+    </View>
      )
    }
 }

@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import {Card, Header, ButtonGroup, CheckBox} from 'react-native-elements'
 import * as Progress from 'react-native-progress';
-
 export default class ScreeningsPage extends Component<{}> {
   render() {
     const { navigate } = this.props.navigation;
