@@ -27,15 +27,11 @@ import LoginPage from "./LoginPage";
 const {width: deviceWidth, height: deviceHeight} = Dimensions.get('window');
 
 const pages = [{
+  backgroundColor: '#4DE8E8'
+}, {
   backgroundColor: 'white'
 }, {
-  title: 'Amazing hotels',
-  description: 'Make sure you',
-  backgroundColor: '#4DE8E8'
-}, {
-  title: 'Go everywhere',
-  description: 'See everywhere',
-  backgroundColor: '#4DE8E8'
+  backgroundColor: 'transparent'
 }];
 
 const styles = StyleSheet.create({
@@ -43,10 +39,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollView: {
-    flex: 1,
     backgroundColor: 'white',
   },
   card: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'transparent',
   },
 });
@@ -90,6 +88,7 @@ export default class OnboardingPage extends Component<{}> {
                     width: deviceWidth,
                     flexDirection: 'column'
                   }]}>
+              <Text style={{color: 'white', fontSize: 24}}>Welcome to Mighty Health</Text>
 
             </View>
 
@@ -98,15 +97,10 @@ export default class OnboardingPage extends Component<{}> {
                     width: deviceWidth,
                     flexDirection: 'column'
                   }]}>
-              <Text>Hello</Text>
             </View>
-
             <View><LoginPage navigation={this.props.navigation}/></View>
-
           </Animated.ScrollView>
         </View>
     );
   }
-
-
 }
