@@ -11,12 +11,11 @@ import {
   AsyncStorage,
 } from 'react-native';
 import ImmunizationsPage from "./ImmunizationsPage";
-import HomePage from "./HomePage";
+import ImmunizationDetail from "./ImmunizationDetail"
+import HomePage from "./HomePage"
 import ScreeningsPage from "./ScreeningsPage";
 import ScreeningDetailPage from "./ScreeningDetailPage";
 import OnboardingPage from "./OnboardingPage";
-import ImmunizationDetail from "./ImmunizationDetail";
-import HomePage from "./HomePage";
 
 
 const MainNavigator = TabNavigator({
@@ -33,29 +32,23 @@ const MainNavigator = TabNavigator({
       },
     }),
   },
-  Screenings:{
-    screen: ScreeningsPage
+  Screenings: {
+    screen: StackNavigator({
+      ScreeningsPage: {screen: ScreeningsPage},
+      ScreeningDetail: {
+        screen: ScreeningDetailPage
+      }
+    }, {
+      navigationOptions: {
+        header: null,
+      },
+    })
   },
-  ScreeningDetail:{
-    screen: ScreeningDetailPage
-  }
 }, {
   tabBarOptions: {
     activeTintColor: Platform.OS === 'ios' ? '#e91e63' : '#eee',
   },
 });
-
-
-// try {
-//   const value = await AsyncStorage.getItem('@MySuperStore:key');
-//   if (value !== null) {
-//     // We have data!!
-//     console.log(value);
-//   }
-// } catch (error) {
-//   // Error retrieving data
-// }
-
 
 const AppNavigator = StackNavigator({
   Onboarding: {screen: OnboardingPage},

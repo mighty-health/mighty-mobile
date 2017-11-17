@@ -8,9 +8,10 @@ import {
 } from 'react-native';
 import {Card, Header, ButtonGroup, CheckBox} from 'react-native-elements'
 import * as Progress from 'react-native-progress';
+
 export default class ScreeningsPage extends Component<{}> {
   render() {
-    const { navigate } = this.props.navigation;
+    const {navigate} = this.props.navigation;
     const dummyDate = new Date();
     const dummyFormattedDate = `${dummyDate.getMonth() + 1}/${dummyDate.getDate()}/${dummyDate.getFullYear()}`;
     const screenings = [
@@ -31,7 +32,6 @@ export default class ScreeningsPage extends Component<{}> {
       }
     ];
 
-    const buttons = ['Book', 'Dismiss'];
     const checked = true;
     const notChecked = false;
 
@@ -40,21 +40,22 @@ export default class ScreeningsPage extends Component<{}> {
           <Header
               backgroundColor={'#4DE8E8'}
               // leftComponent={{icon: 'menu', color: '#fff'}}
-              centerComponent={{text: 'Screenings', style: {color: '#fff', fontWeight: 'bold', fontSize:24}}}
+              centerComponent={{text: 'Screenings', style: {color: '#fff', fontWeight: 'bold', fontSize: 24}}}
               // rightComponent={{icon: 'home', color: '#fff'}}
           />
           <ScrollView>
-          <View>
-            <Text style={{fontWeight: 'bold', color: '#4d4d4d', fontSize:24, textAlign:'center'}}>Your Progress</Text>
-          </View>
-          <View style={{
-                      paddingTop: 10,
-                      paddingLeft: 60,
-                      paddingBottom: 30
-                    }}>
+            <View>
+              <Text style={{fontWeight: 'bold', color: '#4d4d4d', fontSize: 24, textAlign: 'center'}}>Your
+                Progress</Text>
+            </View>
+            <View style={{
+              paddingTop: 10,
+              paddingLeft: 60,
+              paddingBottom: 30
+            }}>
 
-          <Progress.Bar progress={0.7} width={300} borderRadius={5} color={'#FF8A65'} />
-          </View>
+              <Progress.Bar progress={0.7} width={300} borderRadius={5} color={'#FF8A65'}/>
+            </View>
             {screenings.map(
                 (screening, i) => {
                   return (<Card
@@ -83,23 +84,20 @@ export default class ScreeningsPage extends Component<{}> {
 
                     </View>
                     <CheckBox
-                      center
-                      title='Done'
-                      checked={checked}
-                      checkedColor='#4DE8E8'
+                        center
+                        title='Done'
+                        checked={checked}
+                        checkedColor='#4DE8E8'
                     />
                     <CheckBox
-                      center
-                      title='Show Detail'
-                      iconType='material'
-                      checkedIcon='clear'
-                      uncheckedIcon='remove'
-                      checkedColor='#FF8A65'
-                      checked={notChecked}
-                      onPress={() =>
-          navigate('Profile', { name: 'Jane' })
-        }
-                      onPress={() => this.props.navigation.navigate("ScreeningDetail")}
+                        center
+                        title='Show Detail'
+                        iconType='material'
+                        checkedIcon='clear'
+                        uncheckedIcon='remove'
+                        checkedColor='#FF8A65'
+                        checked={notChecked}
+                        onPress={() => this.props.navigation.navigate("ScreeningDetail")}
                     />
                   </Card>);
                 })}

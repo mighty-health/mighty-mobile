@@ -8,16 +8,13 @@ import {
   TouchableHighlight
 } from 'react-native';
 import {Card, Header, ButtonGroup} from 'react-native-elements'
+import * as Progress from 'react-native-progress';
 
-
-export default class ImmunizationsPage extends Component<{}> {
+export default class ImmunizationsPage extends Component {
 
   constructor(props) {
     super(props)
-
     this.state = {immunizationData: []};
-
-
   }
 
   render() {
@@ -39,7 +36,12 @@ export default class ImmunizationsPage extends Component<{}> {
         <View>
           <Header
               backgroundColor={'#4DE8E8'}
-              centerComponent={{text: 'Immunizations', style: {color: '#fff', fontWeight: 'bold', fontSize: 24}}}/>
+              centerComponent={{text: 'Immunizations', style: {color: '#fff', fontWeight: 'bold', fontSize: 24}}}>
+          </Header>
+          <View style={{padding: 10}}>
+            <Progress.Bar progress={0.7} width={300} borderRadius={5} color={'#FF8A65'}/>
+          </View>
+
           <ScrollView>
             {this.state.immunizationData.map(
                 (immunization, i) => {
@@ -82,9 +84,5 @@ export default class ImmunizationsPage extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
   }
-
-
 });
