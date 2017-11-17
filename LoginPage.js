@@ -12,7 +12,7 @@ import {
   AsyncStorage
 } from 'react-native';
 
-export default class LoginPage extends Component<{}> {
+export default class LoginPage extends Component {
 
 
   constructor(props) {

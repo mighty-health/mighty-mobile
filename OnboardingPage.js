@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class OnboardingPage extends Component<{}> {
+export default class OnboardingPage extends Component {
 
   scrollX = new Animated.Value(0);
 

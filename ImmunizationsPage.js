@@ -38,17 +38,20 @@ export default class ImmunizationsPage extends Component {
               backgroundColor={'#4DE8E8'}
               centerComponent={{text: 'Immunizations', style: {color: '#fff', fontWeight: 'bold', fontSize: 24}}}>
           </Header>
-          <View style={{padding: 10}}>
-            <Progress.Bar progress={0.7} width={300} borderRadius={5} color={'#FF8A65'}/>
-          </View>
-
           <ScrollView>
+            <View style={{
+              flex: 1,
+              alignItems: 'center',
+              paddingTop: 20
+            }}>
+              <Progress.Bar progress={0.7} width={300} borderRadius={5} color={'#FF8A65'}/>
+            </View>
             {this.state.immunizationData.map(
                 (immunization, i) => {
                   return (
                       <TouchableHighlight
                           key={i}
-                          onPress={() => this.props.navigation.navigate("Detail")}>
+                          onPress={() => this.props.navigation.navigate("Detail", {immunization: immunization})}>
                         <View>
                           <Card
                               containerStyle={{
@@ -58,8 +61,7 @@ export default class ImmunizationsPage extends Component {
                                 shadowOpacity: .2,
                               }}
                               hideChevron={true}
-                              title={immunization.subtitle}
-                              subtitle={"Hello"}>
+                              title={immunization.subtitle}>
                             <View style={{
                               paddingLeft: 20,
                             }}>

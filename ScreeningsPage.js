@@ -9,7 +9,7 @@ import {
 import {Card, Header, ButtonGroup, CheckBox} from 'react-native-elements'
 import * as Progress from 'react-native-progress';
 
-export default class ScreeningsPage extends Component<{}> {
+export default class ScreeningsPage extends Component {
   render() {
     const {navigate} = this.props.navigation;
     const dummyDate = new Date();
@@ -39,21 +39,13 @@ export default class ScreeningsPage extends Component<{}> {
         <View>
           <Header
               backgroundColor={'#4DE8E8'}
-              // leftComponent={{icon: 'menu', color: '#fff'}}
-              centerComponent={{text: 'Screenings', style: {color: '#fff', fontWeight: 'bold', fontSize: 24}}}
-              // rightComponent={{icon: 'home', color: '#fff'}}
-          />
+              centerComponent={{text: 'Screenings', style: {color: '#fff', fontWeight: 'bold', fontSize: 24}}}/>
           <ScrollView>
-            <View>
-              <Text style={{fontWeight: 'bold', color: '#4d4d4d', fontSize: 24, textAlign: 'center'}}>Your
-                Progress</Text>
-            </View>
             <View style={{
-              paddingTop: 10,
-              paddingLeft: 60,
-              paddingBottom: 30
+              flex: 1,
+              alignItems: 'center',
+              paddingTop: 20
             }}>
-
               <Progress.Bar progress={0.7} width={300} borderRadius={5} color={'#FF8A65'}/>
             </View>
             {screenings.map(
@@ -108,8 +100,6 @@ export default class ScreeningsPage extends Component<{}> {
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    backgroundColor: '#fff'
   }
 });

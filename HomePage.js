@@ -27,12 +27,12 @@ export default class HomePage extends Component {
                 </View>
                 <View style={{
                   paddingTop: 30,
-                  paddingLeft: 30,
+                  paddingLeft: 22,
                   paddingBottom: 30
                 }}>
-                  <Progress.Bar progress={0.7} width={300} borderRadius={5} color={'#FF8A65'}/>
+                  <Progress.Bar progress={0.7} width={250} borderRadius={5} color={'#FF8A65'}/>
                 </View>
-                <Button style={{backgroundColor: '#FF8A65', width: 150, marginLeft: 100, marginTop: 10}}
+                <Button style={{backgroundColor: '#FF8A65', borderColor:'#FF8A65',width: 150, marginLeft: 90, marginTop: 10}}
                         textStyle={{fontSize: 18, color: 'white'}}
                         onPress={() => this.props.navigation.navigate("Screenings")}>Details
                 </Button>
@@ -44,14 +44,14 @@ export default class HomePage extends Component {
                 </View>
                 <View style={{
                   paddingTop: 30,
-                  paddingLeft: 30,
+                  paddingLeft: 22,
                   paddingBottom: 30
                 }}>
-                  <Progress.Bar progress={0.5} width={300} borderRadius={5} color={'#FF8A65'}/>
+                  <Progress.Bar progress={0.5} width={250} borderRadius={5} color={'#FF8A65'}/>
                 </View>
-                <Button style={{backgroundColor: '#FF8A65', width: 150, marginLeft: 100, marginTop: 10}}
+                <Button style={{backgroundColor: '#FF8A65', borderColor:'#FF8A65',width: 150, marginLeft: 90, marginTop: 10}}
                         textStyle={{fontSize: 18, color: 'white'}}
-                        onPress={() => this.props.navigation.navigate("Immunizations")}>
+                        onPress={() => this.props.navigation.navigate("Immunizations")}>Details
                 </Button>
               </Card>
               <Card>
@@ -61,14 +61,14 @@ export default class HomePage extends Component {
                 </View>
                 <View style={{
                   paddingTop: 30,
-                  paddingLeft: 30,
+                  paddingLeft: 22,
                   paddingBottom: 30
                 }}>
-                  <Progress.Bar progress={0.9} width={300} borderRadius={5} color={'#FF8A65'}/>
+                  <Progress.Bar progress={0.9} width={250} borderRadius={5} color={'#FF8A65'}/>
                 </View>
-                <Button style={{backgroundColor: '#FF8A65', width: 150, marginLeft: 100, marginTop: 10}}
+                <Button style={{backgroundColor: '#FF8A65',borderColor:'#FF8A65', width: 150, marginLeft: 90, marginTop: 10}}
                         textStyle={{fontSize: 18, color: 'white'}}
-                        onPress={() => this.props.navigation.navigate("Screenings")}>
+                        onPress={() => this.props.navigation.navigate("Screenings")}>Details
                 </Button>
               </Card>
             </View>

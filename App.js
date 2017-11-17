@@ -7,8 +7,10 @@
 import React, {Component} from 'react';
 import {TabNavigator, StackNavigator} from 'react-navigation';
 import {
+  Text,
   Platform,
   AsyncStorage,
+  Image
 } from 'react-native';
 import ImmunizationsPage from "./ImmunizationsPage";
 import ImmunizationDetail from "./ImmunizationDetail"
@@ -17,10 +19,14 @@ import ScreeningsPage from "./ScreeningsPage";
 import ScreeningDetailPage from "./ScreeningDetailPage";
 import OnboardingPage from "./OnboardingPage";
 
-
 const MainNavigator = TabNavigator({
   Home: {
     screen: HomePage,
+    navigationOptions: {
+      header: null,
+      tabBarIcon: ({tintColor}) => (
+          <Image source={require('./img/home.png')}/>)
+    },
   },
   Immunizations: {
     screen: StackNavigator({
@@ -29,6 +35,8 @@ const MainNavigator = TabNavigator({
     }, {
       navigationOptions: {
         header: null,
+        tabBarIcon: ({tintColor}) => (
+            <Image source={require('./img/immuni.png')}/>)
       },
     }),
   },
@@ -41,6 +49,8 @@ const MainNavigator = TabNavigator({
     }, {
       navigationOptions: {
         header: null,
+        tabBarIcon: ({tintColor}) => (
+            <Image source={require('./img/screen.png')}/>)
       },
     })
   },
