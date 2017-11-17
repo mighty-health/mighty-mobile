@@ -10,21 +10,23 @@ import {
   Platform,
 } from 'react-native';
 import ImmunizationsPage from "./ImmunizationsPage";
-import AppointmentsPage from "./AppointmentsPage";
+import HomePage from "./HomePage";
 import ScreeningsPage from "./ScreeningsPage";
+import ScreeningDetailPage from "./ScreeningDetailPage";
 
 const AppNavigator = TabNavigator({
   Immunizations: {
     screen: ImmunizationsPage,
   },
-  Appointments: {
-    screen: AppointmentsPage
+  Home: {
+    screen: HomePage
   },
   Screenings:{
     screen: ScreeningsPage
-  }
-
-
+  },
+  ScreeningDetail:{
+    screen: ScreeningDetailPage
+  },
 }, {
   tabBarOptions: {
     activeTintColor: '#4DD0E1' ,
