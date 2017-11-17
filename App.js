@@ -11,8 +11,9 @@ import {
   AsyncStorage,
 } from 'react-native';
 import ImmunizationsPage from "./ImmunizationsPage";
-import AppointmentsPage from "./AppointmentsPage";
+import HomePage from "./HomePage";
 import ScreeningsPage from "./ScreeningsPage";
+import ScreeningDetailPage from "./ScreeningDetailPage";
 import OnboardingPage from "./OnboardingPage";
 import ImmunizationDetail from "./ImmunizationDetail";
 import HomePage from "./HomePage";
@@ -32,8 +33,11 @@ const MainNavigator = TabNavigator({
       },
     }),
   },
-  Screenings: {
+  Screenings:{
     screen: ScreeningsPage
+  },
+  ScreeningDetail:{
+    screen: ScreeningDetailPage
   }
 }, {
   tabBarOptions: {
