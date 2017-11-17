@@ -8,6 +8,8 @@ import {
 
 
 export default class ScreeningsPage extends Component {
+
+
   render() {
     return (
         <View style={styles.container}>

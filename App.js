@@ -5,30 +5,42 @@
  */
 
 import React, {Component} from 'react';
-import {TabNavigator} from 'react-navigation';
+import {TabNavigator, StackNavigator} from 'react-navigation';
 import {
   Platform,
 } from 'react-native';
 import ImmunizationsPage from "./ImmunizationsPage";
 import AppointmentsPage from "./AppointmentsPage";
 import ScreeningsPage from "./ScreeningsPage";
+import OnboardingPage from "./OnboardingPage";
+import HomePage from "./HomePage";
 
-const AppNavigator = TabNavigator({
+
+const MainNavigator = TabNavigator({
+  Home: {
+    screen: HomePage,
+  },
   Immunizations: {
     screen: ImmunizationsPage,
   },
-  Appointments: {
-    screen: AppointmentsPage
-  },
-  Screenings:{
+  Screenings: {
     screen: ScreeningsPage
   }
-
-
 }, {
   tabBarOptions: {
-    activeTintColor: '#4DD0E1' ,
+    activeTintColor: Platform.OS === 'ios' ? '#e91e63' : '#eee',
   },
 });
+
+const AppNavigator = StackNavigator({
+  Onboarding: {screen: OnboardingPage},
+  Main: {screen: MainNavigator}
+}, {
+  mode: 'modal',
+  navigationOptions: {
+    header: null,
+  },
+});
+
 
 export default AppNavigator

@@ -17,7 +17,7 @@ export default class ImmunizationsPage extends Component<{}> {
 
     const immunizations = [
       {
-        description: 'HEPATITIS',
+        description: 'MUMPS',
         lastDose: dummyDate,
         dueDate: dummyDate
       },
@@ -50,7 +50,7 @@ export default class ImmunizationsPage extends Component<{}> {
           <Header
               backgroundColor={'#4DE8E8'}
               // leftComponent={{icon: 'menu', color: '#fff'}}
-              centerComponent={{text: 'Immunizations', style: {color: '#fff', fontWeight: 'bold', fontSize:24}}}
+              centerComponent={{text: 'Immunizations', style: {color: '#fff', fontWeight: 'bold', fontSize: 24}}}
               // rightComponent={{icon: 'home', color: '#fff'}}
           />
           <ScrollView>
@@ -70,20 +70,17 @@ export default class ImmunizationsPage extends Component<{}> {
                       subtitle={"Hello"}>
                     <View style={{
                       paddingLeft: 20,
-                      paddingBottom: 30
+                      // paddingBottom: 30
                     }}>
                       <Text style={{fontWeight: 'bold', color: '#4d4d4d', paddingBottom: 5}}>Last Dose: {
                         <Text style={{fontWeight: '300'}}>{dummyFormattedDate}</Text>}
                       </Text>
 
-                      <Text style={{fontWeight: 'bold', color: '#4d4d4d'}}>Due Date: {
+                      <Text style={{fontWeight: 'bold', color: 'red'}}>Due Date: {
                         <Text style={{fontWeight: '300'}}>{dummyFormattedDate}</Text>}
                       </Text>
 
                     </View>
-                    <ButtonGroup
-                        buttons={buttons}
-                        containerStyle={{height: 50}}/>
                   </Card>);
                 })}
           </ScrollView>
