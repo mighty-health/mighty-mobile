@@ -52,7 +52,7 @@ export default class ImmunizationsPage extends Component {
             }}>
               <Text style={{
                 fontWeight: 'bold',
-                color: immunizationData.due_date == 'ASAP' ? 'red' : 'black'
+                color: immunizationData.due_date == 'ASAP' ? '#FF8A65' : 'black'
               }}>Due Date: {
                 <Text style={{fontWeight: '300'}}>{immunizationData.due_date}</Text>}
               </Text>

@@ -31,7 +31,7 @@ export default class ImmunizationsPage extends Component {
         });
 
     const buttons = ['Book', 'Dismiss'];
-    const alertColor = 'red'
+    const alertColor = '#FF8A65'
     return (
         <View>
           <Header
@@ -44,7 +44,6 @@ export default class ImmunizationsPage extends Component {
               alignItems: 'center',
               paddingTop: 20
             }}>
-              <Progress.Bar progress={0.7} width={300} borderRadius={5} color={'#FF8A65'}/>
             </View>
             {this.state.immunizationData.map(
                 (immunization, i) => {
@@ -67,7 +66,7 @@ export default class ImmunizationsPage extends Component {
                             }}>
                               <Text style={{
                                 fontWeight: 'bold',
-                                color: immunization.due_date == 'ASAP' ? 'red' : 'black'
+                                color: immunization.due_date == 'ASAP' ? alertColor : 'black'
                               }}>Due Date: {
                                 <Text style={{fontWeight: '300'}}>{immunization.due_date}</Text>}
                               </Text>

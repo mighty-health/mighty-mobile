@@ -91,13 +91,6 @@ export default class OnboardingPage extends Component {
               <Text style={{color: 'white', fontSize: 24}}>Welcome to Mighty Health</Text>
 
             </View>
-
-            <View key={2}
-                  style={[styles.card, {
-                    width: deviceWidth,
-                    flexDirection: 'column'
-                  }]}>
-            </View>
             <View><LoginPage navigation={this.props.navigation}/></View>
           </Animated.ScrollView>
         </View>

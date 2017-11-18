@@ -12,6 +12,8 @@ import {
   AsyncStorage
 } from 'react-native';
 
+
+
 export default class LoginPage extends Component {
 
 
@@ -19,7 +21,7 @@ export default class LoginPage extends Component {
     super(props);
 
     this.state = {
-      number: "",
+      number: "a33d3135-2c7a-43ad-8804-3c2d3f492253",
       ready: false
     };
   }
@@ -46,6 +48,7 @@ export default class LoginPage extends Component {
           <Button disabled={false}
                   title={"Login"}
                   onPress={() => this.submit()}/>
+
         </View>)
   }
 }
