@@ -15,22 +15,20 @@ export default class ImmunizationsPage extends Component {
   constructor(props) {
     super(props)
     this.state = {immunizationData: []};
+
+
+    AsyncStorage.getItem('@MightyStore:patient_uuid', (err, patient_id) => {
+
+      fetch(`http://mighty-engine.appspot.com/api/v1/immunizations/?patient_id=${patient_id}`)
+          .then((response) => response.json())
+          .then((responseJSON) => {
+            this.setState({immunizationData: responseJSON});
+          });
+    });
   }
 
   render() {
-    const dummyDate = new Date();
-    const dummyFormattedDate = `${dummyDate.getMonth() + 1}/${dummyDate.getDate()}/${dummyDate.getFullYear()}`;
 
-
-    const patient_id = "a33d3135-2c7a-43ad-8804-3c2d3f492253";
-
-    fetch(`http://mighty-engine.appspot.com/api/v1/immunizations/?patient_id=${patient_id}`)
-        .then((response) => response.json())
-        .then((responseJSON) => {
-          this.setState({immunizationData: responseJSON});
-        });
-
-    const buttons = ['Book', 'Dismiss'];
     const alertColor = '#FF8A65'
     return (
         <View>

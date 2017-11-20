@@ -31,6 +31,7 @@ export default class LoginPage extends Component {
     try {
       await AsyncStorage.setItem('@MightyStore:patient_uuid', this.state.number);
     } catch (error) {
+
     }
 
     this.props.navigation.navigate("Main");

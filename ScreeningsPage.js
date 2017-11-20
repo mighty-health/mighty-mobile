@@ -4,7 +4,8 @@ import {
   ScrollView,
   View,
   Text,
-  Alert
+  Alert,
+  AsyncStorage
 } from 'react-native';
 import {Card, Header, ButtonGroup, CheckBox, ListItem} from 'react-native-elements'
 import * as Progress from 'react-native-progress';
@@ -15,46 +16,24 @@ export default class ScreeningsPage extends Component {
   constructor(props) {
     super(props)
     this.state = {screeningData: []};
+
+
+    AsyncStorage.getItem('@MightyStore:patient_uuid', (err, patient_id) => {
+      fetch(`http://mighty-engine.appspot.com/api/v1/screenings/?patient_id=${patient_id}`)
+          .then((response) => response.json())
+          .then((responseJSON) => {
+            this.setState({screeningData: responseJSON});
+          });
+    });
   }
 
   render() {
     const {navigate} = this.props.navigation;
     const dummyDate = new Date();
     const dummyFormattedDate = `${dummyDate.getMonth() + 1}/${dummyDate.getDate()}/${dummyDate.getFullYear()}`;
-    const screenings = [
-      {
-        title: "Type-2 Diabetes Screening",
-        status: "complete",
-        timing: "Every X years",
-        due_date: "MM/DD/YYYY",
-        most_recent_date: "MM/DD/YYYY",
-        observations: [
-          {
-            name: "Glucose",
-            value: "115",
-            unit: "mg/dL"
-          },
-          {
-            name: "Glucose",
-            value: "115",
-            unit: "mg/dL"
-          }
-        ],
-        rank: 1,
-        description: ""
-      }
-    ];
 
     const checked = true;
     const notChecked = false;
-
-    const patient_id = "a33d3135-2c7a-43ad-8804-3c2d3f492253";
-
-    fetch(`http://mighty-engine.appspot.com/api/v1/screenings/?patient_id=${patient_id}`)
-        .then((response) => response.json())
-        .then((responseJSON) => {
-          this.setState({screeningData: responseJSON});
-        });
 
 
     return (

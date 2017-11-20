@@ -7,7 +7,8 @@ import {
   Text,
   Alert,
   Image,
-  TouchableHighlight
+  TouchableHighlight,
+  AsyncStorage
 } from 'react-native';
 import ProgressCircle from 'react-native-progress-circle'
 
@@ -16,25 +17,23 @@ export default class HomePage extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      summaryData: []
+    };
 
-    this.state = {summaryData: []};
+    AsyncStorage.getItem('@MightyStore:patient_uuid', (err, patient_id) => {
 
-
+      fetch(`http://mighty-engine.appspot.com/api/v1/summary/?patient_id=${patient_id}`)
+          .then((response) => response.json())
+          .then((responseJSON) => {
+            this.setState({summaryData: [responseJSON]});
+          });
+    });
   }
 
   render() {
 
     const {navigate} = this.props.navigation;
-
-
-    const patient_id = "a33d3135-2c7a-43ad-8804-3c2d3f492253";
-
-    fetch(`http://mighty-engine.appspot.com/api/v1/summary/?patient_id=${patient_id}`)
-        .then((response) => response.json())
-        .then((responseJSON) => {
-          this.setState({summaryData: [responseJSON]});
-        });
-
 
     return (
         <View>
