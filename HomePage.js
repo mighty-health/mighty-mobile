@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Header, ButtonGroup, CheckBox} from 'react-native-elements'
+import {Card, Header, ListItem, Icon} from 'react-native-elements'
 import {
   StyleSheet,
   ScrollView,
@@ -12,79 +12,127 @@ import {
 import ProgressCircle from 'react-native-progress-circle'
 
 export default class HomePage extends Component {
+
+  constructor(props) {
+    super(props)
+
+
+    this.state = {summaryData: []};
+
+
+  }
+
   render() {
+
     const {navigate} = this.props.navigation;
+
+
+    const patient_id = "a33d3135-2c7a-43ad-8804-3c2d3f492253";
+
+    fetch(`http://mighty-engine.appspot.com/api/v1/summary/?patient_id=${patient_id}`)
+        .then((response) => response.json())
+        .then((responseJSON) => {
+          this.setState({summaryData: [responseJSON]});
+        });
+
+
     return (
         <View>
           <ScrollView>
             <Header
                 backgroundColor={'#4DE8E8'}
                 centerComponent={{text: 'Home', style: {color: '#fff', fontWeight: 'bold', fontSize: 24}}}/>
-            <View>
+            {
+              this.state.summaryData.map((summary, i) => {
 
-              <Card>
-                <TouchableHighlight
-                    onPress={() => this.props.navigation.navigate("Screenings")}><View>
+                let immunizationPercentage = summary.completed_immunizations / summary.total_immunizations * 100;
+                let screeningPercentage = summary.completed_screenings / summary.total_screenings * 100;
+                return (
+                    <View key={i}>
+                      <Card>
+                        <View>
+                          <Text style={{fontWeight: 'bold', color: '#4d4d4d', fontSize: 24, textAlign: 'center'}}>
+                            Reminders</Text>
+                        </View>
 
-                  <View>
-                    <Text style={{fontWeight: 'bold', color: '#4d4d4d', fontSize: 24, textAlign: 'center'}}>
-                      Screening Progress</Text>
-                  </View>
-                  <View style={{
-                    flex: 1,
-                    alignItems: 'center',
-                    paddingTop: 30,
-                    paddingLeft: 22,
-                    paddingBottom: 30
-                  }}>
-                    <ProgressCircle
-                        percent={30}
-                        radius={50}
-                        borderWidth={8}
-                        color="#FF8A65"
-                        shadowColor="#FBE9E7"
-                        bgColor="white">
-                      <Text style={{fontSize: 18}}>{'30%'}</Text>
-                    </ProgressCircle>
-                    <Image
-                        style={{width: 33, height: 29}}
-                        source={require('./img/more.png')}/>
-                  </View>
-                </View></TouchableHighlight>
-              </Card>
+                        {summary.reminders.map((reminder, j) => {
+                          return (
+                              <ListItem
+                                  key={j}
+                                  roundedAvatar
+                                  hideChevron={true}
+                                  title={`${reminder.title} ${reminder.type}`}
+                                  leftIcon={{
+                                    name: 'priority-high',
+                                    color: '#FF8A65'
+                                  }}>
+                              </ListItem>
+                          )
+                        })}
+                      </Card>
+                      <Card>
+                        <TouchableHighlight
+                            onPress={() => this.props.navigation.navigate("Screenings")}><View>
 
+                          <View>
+                            <Text style={{fontWeight: 'bold', color: '#4d4d4d', fontSize: 24, textAlign: 'center'}}>
+                              Screening Progress</Text>
+                          </View>
+                          <View style={{
+                            flex: 1,
+                            alignItems: 'center',
+                            paddingTop: 30,
+                            paddingLeft: 22,
+                            paddingBottom: 30
+                          }}>
+                            <ProgressCircle
+                                percent={screeningPercentage}
+                                radius={50}
+                                borderWidth={8}
+                                color="#FF8A65"
+                                shadowColor="#FBE9E7"
+                                bgColor="white">
+                              <Text style={{fontSize: 18}}>{screeningPercentage + '%'}</Text>
+                            </ProgressCircle>
+                            <Image
+                                style={{width: 33, height: 29}}
+                                source={require('./img/more.png')}/>
+                          </View>
+                        </View></TouchableHighlight>
+                      </Card>
+                      <Card>
 
-              <Card>
-
-                <TouchableHighlight
-                    onPress={() => this.props.navigation.navigate("Immunizations")}><View>
-                  <View>
-                    <Text style={{fontWeight: 'bold', color: '#4d4d4d', fontSize: 24, textAlign: 'center'}}>
-                      Immunization Progress</Text>
-                  </View>
-                  <View style={{
-                    flex: 1,
-                    alignItems: 'center',
-                    paddingTop: 30,
-                    paddingLeft: 22,
-                    paddingBottom: 30
-                  }}>
-                    <ProgressCircle
-                        percent={70}
-                        radius={50}
-                        borderWidth={8}
-                        color="#FF8A65"
-                        shadowColor="#FBE9E7"
-                        bgColor="white">
-                      <Text style={{fontSize: 18}}>{'70%'}</Text>
-                    </ProgressCircle>
-                    <Image
-                        style={{width: 33, height: 29}}
-                        source={require('./img/more.png')}/>
-                  </View>
-                </View></TouchableHighlight>
-              </Card>
-            </View>
+                        <TouchableHighlight
+                            onPress={() => this.props.navigation.navigate("Immunizations")}><View>
+                          <View>
+                            <Text style={{fontWeight: 'bold', color: '#4d4d4d', fontSize: 24, textAlign: 'center'}}>
+                              Immunization Progress</Text>
+                          </View>
+                          <View style={{
+                            flex: 1,
+                            alignItems: 'center',
+                            paddingTop: 30,
+                            paddingLeft: 22,
+                            paddingBottom: 30
+                          }}>
+                            <ProgressCircle
+                                percent={immunizationPercentage}
+                                radius={50}
+                                borderWidth={8}
+                                color="#FF8A65"
+                                shadowColor="#FBE9E7"
+                                bgColor="white">
+                              <Text style={{fontSize: 18}}>{immunizationPercentage + '%'}</Text>
+                            </ProgressCircle>
+                            <Image
+                                style={{width: 33, height: 29}}
+                                source={require('./img/more.png')}/>
+                          </View>
+                        </View></TouchableHighlight>
+                      </Card>
+                    </View>)
+              })
+            }
           </ScrollView>
         </View>)
   }
