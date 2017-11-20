@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
-![alt text](/Immunization.png?raw=true)
+![alt text](/Summary.png?raw=true)
 
 To Run:
 ~~~
