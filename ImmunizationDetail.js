@@ -60,7 +60,11 @@ export default class ImmunizationsPage extends Component {
             </View>
             {
               immunizationData.prior_dates.map((item, i) => (
-                  <ListItem key={i} title={JSON.stringify(item)}/>))
+                  <ListItem
+                      key={i}
+                      hideChevron={true}
+                      title={JSON.stringify(item)}/>)
+              )
             }
           </Card>
 
