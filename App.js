@@ -4,9 +4,6 @@
  * @flow
  *
  *
-   TODO: Immunizations Progress Bar
-   TODO: Tetanus Doctor name.
-   TODO: Stub Screening page, for physical; Incl. Height, Weight & Blood Pressure
  */
 
 import React, {Component} from 'react';

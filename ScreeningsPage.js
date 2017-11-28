@@ -7,7 +7,7 @@ import {
   Alert,
   AsyncStorage
 } from 'react-native';
-import {Card, Header, ButtonGroup, CheckBox, ListItem} from 'react-native-elements'
+import {Card, Header, ListItem, Icon} from 'react-native-elements'
 import * as Progress from 'react-native-progress';
 
 export default class ScreeningsPage extends Component {
@@ -27,31 +27,35 @@ export default class ScreeningsPage extends Component {
     // });
 
 
-    this.setState({
+    this.state = {
       screeningData: [
         {
-          title: "Type-2 Diabetes Screening",
+          title: "Annual Physical",
           status: "complete",
-          timing: "Every X years",
-          due_date: "MM/DD/YYYY",
-          most_recent_date: "MM/DD/YYYY",
+          timing: "Every years",
+          due_date: "06/14/2017",
+          most_recent_date: "06/14/2016",
           observations: [
             {
-              name: "Glucose",
-              value: "115",
-              unit: "mg/dL"
+              name: "Height",
+              value: "185",
+              unit: "cm"
             },
             {
-              name: "Glucose",
-              value: "115",
-              unit: "mg/dL"
+              name: "Weight",
+              value: "77.1",
+              unit: "kg"
+            },
+            {
+              name: "Blood Pressure",
+              value: "120/80",
+              unit: "mmHg"
             }
           ],
           rank: 1,
           description: ""
-        }
-      ]
-    });
+        }]
+    };
 
   }
 
@@ -62,7 +66,6 @@ export default class ScreeningsPage extends Component {
 
     const checked = true;
     const notChecked = false;
-
 
     return (
         <View>
@@ -75,46 +78,65 @@ export default class ScreeningsPage extends Component {
               alignItems: 'center',
               paddingTop: 20
             }}>
+
+              <Progress.Bar
+                  color={'#FF8A65'}
+                  progress={0.01}
+                  width={300}/>
             </View>
 
-            <Progress.Bar
-                color={'#FF8A65'}
-                progress={0.4}
-                width={300}/>
             {this.state.screeningData.map(
                 (screening, i) => {
                   return (<Card
-                      containerStyle={{
-                        padding: 10,
-                        shadowOffset: {width: 1, height: 1,},
-                        shadowColor: '#4DE8E8',
-                        shadowOpacity: .2,
-                      }}
+                          containerStyle={{
+                            padding: 10,
+                            shadowOffset: {width: 1, height: 1,},
+                            shadowColor: '#4DE8E8',
+                            shadowOpacity: .2,
+                          }}
+                          key={i}
+                          hideChevron={true}
+                          title={screening.title}>
 
-                      key={i}
-                      hideChevron={true}
-                      title={screening.title}
-                      subtitle={"Hello"}>
-                    <View style={{
-                      paddingLeft: 20,
-                      paddingBottom: 30
-                    }}>
-                      <Text style={{fontWeight: 'bold', color: '#4d4d4d', paddingBottom: 5}}>Last Performed: {
-                        <Text style={{fontWeight: '300'}}>{dummyFormattedDate}</Text>}
-                      </Text>
-                    </View>
+                        <View
+                            style={{
+                              flex: 1,
+                              flexDirection: 'row',
+                              justifyContent: 'space-between',
+                              alignItems: 'flex-start'
+                            }}>
+                          
+                          <View style={{
+                            paddingLeft: 20,
+                            paddingBottom: 30
+                          }}>
+                            <Text style={{fontWeight: 'bold', color: '#4d4d4d', paddingBottom: 5}}>Last Performed: {
+                              <Text style={{fontWeight: '300'}}>{screening.most_recent_date}</Text>}
+                            </Text>
+                            <Text style={{fontWeight: 'bold', color: '#FF8A65', paddingBottom: 5}}>Due Date: {
+                              <Text style={{fontWeight: '300'}}>{screening.due_date}</Text>}
+                            </Text>
+                          </View>
 
-                    <CheckBox
-                        center
-                        title='Done'
-                        checked={checked}
-                        checkedColor='#4DE8E8'
-                    />
-                    {screening.observations.map((observation, i) => (
-                        <ListItem key={i} title={
-                          `${observation.name}: ${observation.value} ${observation.unit}`
-                        }/>))}
-                  </Card>);
+                          <Icon
+                              name='error'
+                              color='red'
+                          />
+                        </View>
+                        {/*<CheckBox*/}
+                        {/*center*/}
+                        {/*title='Done'*/}
+                        {/*checked={checked}*/}
+                        {/*checkedColor='#4DE8E8'*/}
+                        {/*/>*/}
+                        {screening.observations.map((observation, i) => (
+                            <ListItem key={i}
+                                      hideChevron={true}
+                                      title={
+                                        `${observation.name}: ${observation.value} ${observation.unit}`
+                                      }/>))}
+                      </Card>
+                  );
                 })}
           </ScrollView>
         </View>

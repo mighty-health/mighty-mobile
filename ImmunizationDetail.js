@@ -56,14 +56,23 @@ export default class ImmunizationsPage extends Component {
               }}>Due Date: {
                 <Text style={{fontWeight: '300'}}>{immunizationData.due_date}</Text>}
               </Text>
-              <Text>{`It is ${immunizationData.classification} that you receive a ${immunizationData.title} ${immunizationData.timing}`}</Text>
+              <Text>{`It is ${immunizationData.classification} that you receive a ${immunizationData.title} ${immunizationData.timing}`}. </Text>
+
+              <Text
+                  style={{
+                    paddingTop: 20,
+                    paddingBottom: 20
+                  }}
+              >{`${immunizationData.description}`}</Text>
+
             </View>
             {
               immunizationData.prior_dates.map((item, i) => (
                   <ListItem
                       key={i}
                       hideChevron={true}
-                      title={JSON.stringify(item)}/>)
+                      title={item}
+                      subtitle={'Dr. Bartram; Falls Church, VA'}/>)
               )
             }
           </Card>

@@ -18,17 +18,44 @@ export default class HomePage extends Component {
     super(props)
 
     this.state = {
-      summaryData: []
+      summaryData: [{
+        total_immunizations: 5,
+        completed_immunizations: 2,
+        total_screenings: 1,
+        completed_screenings: 1,
+        reminders: [
+          {
+            title: "Flu Shot",
+            type: "Immunization",
+            due_date: "ASAP"
+          },
+          {
+            title: "Chickenpox",
+            type: "Immunization",
+            due_date: "ASAP"
+          },
+          {
+            title: "MMR",
+            type: "Immunization",
+            due_date: "ASAP"
+          },
+          {
+            title: "Annual Physical",
+            type: "",
+            due_date: "ASAP"
+          }
+        ]
+      }]
     };
-
-    AsyncStorage.getItem('@MightyStore:patient_uuid', (err, patient_id) => {
-
-      fetch(`http://mighty-engine.appspot.com/api/v1/summary/?patient_id=${patient_id}`)
-          .then((response) => response.json())
-          .then((responseJSON) => {
-            this.setState({summaryData: [responseJSON]});
-          });
-    });
+    //
+    // AsyncStorage.getItem('@MightyStore:patient_uuid', (err, patient_id) => {
+    //
+    //   fetch(`http://mighty-engine.appspot.com/api/v1/summary/?patient_id=${patient_id}`)
+    //       .then((response) => response.json())
+    //       .then((responseJSON) => {
+    //         this.setState({summaryData: [responseJSON]});
+    //       });
+    // });
   }
 
   render() {
@@ -85,13 +112,13 @@ export default class HomePage extends Component {
                             paddingBottom: 30
                           }}>
                             <ProgressCircle
-                                percent={screeningPercentage}
+                                percent={0}
                                 radius={50}
                                 borderWidth={8}
                                 color="#FF8A65"
                                 shadowColor="#FBE9E7"
                                 bgColor="white">
-                              <Text style={{fontSize: 18}}>{screeningPercentage + '%'}</Text>
+                              <Text style={{fontSize: 18}}>{'0%'}</Text>
                             </ProgressCircle>
                             <Image
                                 style={{width: 33, height: 29}}
