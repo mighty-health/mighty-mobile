@@ -17,14 +17,42 @@ export default class ScreeningsPage extends Component {
     super(props)
     this.state = {screeningData: []};
 
+    //
+    // AsyncStorage.getItem('@MightyStore:patient_uuid', (err, patient_id) => {
+    //   fetch(`http://mighty-engine.appspot.com/api/v1/screenings/?patient_id=${patient_id}`)
+    //       .then((response) => response.json())
+    //       .then((responseJSON) => {
+    //         this.setState({screeningData: responseJSON});
+    //       });
+    // });
 
-    AsyncStorage.getItem('@MightyStore:patient_uuid', (err, patient_id) => {
-      fetch(`http://mighty-engine.appspot.com/api/v1/screenings/?patient_id=${patient_id}`)
-          .then((response) => response.json())
-          .then((responseJSON) => {
-            this.setState({screeningData: responseJSON});
-          });
+
+    this.setState({
+      screeningData: [
+        {
+          title: "Type-2 Diabetes Screening",
+          status: "complete",
+          timing: "Every X years",
+          due_date: "MM/DD/YYYY",
+          most_recent_date: "MM/DD/YYYY",
+          observations: [
+            {
+              name: "Glucose",
+              value: "115",
+              unit: "mg/dL"
+            },
+            {
+              name: "Glucose",
+              value: "115",
+              unit: "mg/dL"
+            }
+          ],
+          rank: 1,
+          description: ""
+        }
+      ]
     });
+
   }
 
   render() {
@@ -48,6 +76,11 @@ export default class ScreeningsPage extends Component {
               paddingTop: 20
             }}>
             </View>
+
+            <Progress.Bar
+                color={'#FF8A65'}
+                progress={0.4}
+                width={300}/>
             {this.state.screeningData.map(
                 (screening, i) => {
                   return (<Card

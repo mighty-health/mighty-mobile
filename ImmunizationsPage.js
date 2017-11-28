@@ -29,7 +29,7 @@ export default class ImmunizationsPage extends Component {
 
   render() {
 
-    const alertColor = '#FF8A65'
+    const alertColor = '#FF8A65';
     return (
         <View>
           <Header
@@ -42,6 +42,10 @@ export default class ImmunizationsPage extends Component {
               alignItems: 'center',
               paddingTop: 20
             }}>
+              <Progress.Bar
+                  color={alertColor}
+                  progress={0.4}
+                  width={300}/>
             </View>
             {this.state.immunizationData.map(
                 (immunization, i) => {
